@@ -1,0 +1,167 @@
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #eee;
+  padding-top: 60px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  padding: 0 80px;
+}
+
+/* Columns */
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Logo */
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: #f38ab3;
+}
+
+.logo span {
+  color: #000;
+}
+
+/* Text */
+.text {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Headings */
+.heading {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+/* Links */
+.link {
+  font-size: 14px;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: #f38ab3;
+}
+
+/* Contact */
+.contactItem {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.contactItem svg {
+  color: #f38ab3;
+  margin-top: 3px;
+}
+
+/* Social icons */
+.socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.socials button {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #f38ab3;
+  background-color: transparent;
+  color: #f38ab3;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.socials button:hover {
+  background-color: #f38ab3;
+  color: #fff;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(243, 138, 179, 0.3);
+}
+
+.socials button:active {
+  transform: translateY(-2px);
+}
+
+.socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Newsletter */
+.input {
+  margin-top: 6px;
+}
+
+.subscribeBtn {
+  margin-top: 10px !important;
+  background-color: #f38ab3 !important;
+  color: #fff !important;
+  text-transform: none !important;
+  padding: 10px !important;
+  border-radius: 8px !important;
+}
+
+.subscribeBtn:hover {
+  background-color: #ec6f9f !important;
+}
+
+/* Bottom bar */
+.bottom {
+  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.link {
+  font-size: 18px;
+  color: #64748b;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #f38ab3;
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}

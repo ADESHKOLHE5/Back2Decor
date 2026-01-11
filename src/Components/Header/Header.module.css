@@ -1,0 +1,69 @@
+/* AppBar */
+.appBar {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #eee;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  min-height: 70px;
+}
+
+/* Logo */
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: #f38ab3;
+  cursor: pointer;
+  user-select: none;
+}
+
+.logo span {
+  color: #000;
+}
+
+/* Navigation container */
+.navLinks {
+  display: flex;
+  gap: 28px;
+}
+
+/* Normal nav link */
+.navItem {
+  font-size: 18px;
+  color: #555;
+  cursor: pointer;
+  text-decoration: none;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect */
+.navItem:hover {
+  color: #f38ab3;
+}
+
+/* Active route */
+.activeNav {
+  font-size: 20px;
+  color: #f38ab3;
+  font-weight: 600;
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #f38ab3;
+}
+
+/* Icons container */
+.icons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Icon buttons */
+.icons button {
+  color: #333;
+}
