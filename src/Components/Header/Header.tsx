@@ -1,6 +1,7 @@
 import { AppBar, Toolbar, Box, Typography, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
@@ -51,6 +52,7 @@ const Header = () => {
           <IconButton><SearchIcon /></IconButton>
           <IconButton><FavoriteBorderIcon /></IconButton>
           <IconButton><ShoppingBagOutlinedIcon /></IconButton>
+          <IconButton><AccountCircleIcon/></IconButton>
         </Box>
 
       </Toolbar>

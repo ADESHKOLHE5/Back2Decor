@@ -51,9 +51,9 @@ const Footer = () => {
           </Typography>
 
           <Box className={styles.socials}>
-            <IconButton><a  href="https://www.instagram.com/"><InstagramIcon /></a></IconButton>
-            <IconButton><a href="https://www.facebook.com/"><FacebookOutlinedIcon /></a></IconButton>
-            <IconButton><a href="https://twitter.com/"><TwitterIcon /></a></IconButton>
+            <IconButton><a  href="https://www.instagram.com/" target="_blank"><InstagramIcon /></a></IconButton>
+            <IconButton><a href="https://www.facebook.com/" target="_blank"><FacebookOutlinedIcon /></a></IconButton>
+            <IconButton><a href="https://twitter.com/" target="_blank"><TwitterIcon /></a></IconButton>
           </Box>
         </Box>
 

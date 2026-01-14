@@ -1,11 +1,14 @@
 import React from 'react';
+// import { Outlet } from 'react-router-dom';
+import ProductManager from '../Components/CardProductDesign/ProductManager';
 
 const ShopAll: React.FC = () => {
   return (
     <section style={{ padding: 24 }}>
-      <h1>Shop All</h1>
-      <p>Browse all products.</p>
-    </section>
+       <ProductManager />
+        {/* <Outlet /> */}
+      </section>
+    
   );
 };
 

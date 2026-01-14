@@ -1,0 +1,93 @@
+{
+  "BakePackProducts": [
+    {
+      "id": 1,
+      "category": "Toppers",
+      "title": "Gold Leaf Cake Topper",
+      "price": 1078,
+      "rating": 5,
+      "ratingCount": 45,
+      "image": "https://images.unsplash.com/photo-1535141123073-30d5a599a1ac?q=80&w=800",
+      "discount": 18
+    },
+    {
+      "id": 4,
+      "category": "Theme Toppers",
+      "title": "Happy Birthday Theme Topper",
+      "price": 829,
+      "rating": 5,
+      "ratingCount": 56,
+      "image": "https://images.unsplash.com/photo-1530103043960-ef38714abb15?q=80&w=800",
+      "discount": 15
+    },
+    {
+      "id": 7,
+      "category": "Candles",
+      "title": "Vanilla Scent Birthday Candles",
+      "price": 663,
+      "rating": 5,
+      "ratingCount": 67,
+      "image": "https://images.unsplash.com/photo-1541414779316-956a5084c0d4?q=80&w=800",
+      "discount": 20
+    },
+    {
+      "id": 16,
+      "category": "Customized Topper",
+      "title": "Custom Name Cake Topper",
+      "price": 1659,
+      "rating": 5,
+      "ratingCount": 62,
+      "image": "https://images.unsplash.com/photo-1525203135222-793540026e7a?q=80&w=800",
+      "discount": 22
+    },
+    {
+      "id": 22,
+      "category": "Knifes",
+      "title": "Serrated Cake Knife",
+      "price": 1327,
+      "rating": 5,
+      "ratingCount": 52,
+      "image": "https://images.unsplash.com/photo-1593618998160-e34014e67546?q=80&w=800",
+      "discount": 17
+    },
+    {
+      "id": 34,
+      "category": "Cake Essentials",
+      "title": "Cake Decorating Turntable",
+      "price": 2074,
+      "rating": 5,
+      "ratingCount": 65,
+      "image": "https://images.unsplash.com/photo-1558326567-98ae2405596b?q=80&w=800",
+      "discount": 21
+    },
+    {
+      "id": 40,
+      "category": "Artificial Flower",
+      "title": "Silk Rose Cake Flowers",
+      "price": 912,
+      "rating": 5,
+      "ratingCount": 52,
+      "image": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=800"
+    },
+    {
+      "id": 43,
+      "category": "Baking Tools",
+      "title": "Cake Leveler and Scraper Set",
+      "price": 1659,
+      "rating": 5,
+      "ratingCount": 58,
+      "image": "https://images.unsplash.com/photo-1621570275932-9ec610190861?q=80&w=800",
+      "discount": 14
+    },
+    {
+      "id": 49,
+      "category": "Colors",
+      "title": "Gel Food Coloring 12 Pack",
+      "price": 995,
+      "rating": 5,
+      "ratingCount": 59,
+      "image": "https://images.unsplash.com/photo-1606913084603-3e7702b0ddb4?q=80&w=800",
+      "discount": 16
+    }
+  ]
+}

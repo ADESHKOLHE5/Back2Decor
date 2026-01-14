@@ -1,10 +1,11 @@
 import React from 'react';
+import Features from '../Components/Features/Features';
 
 const Home: React.FC = () => {
   return (
-    <section style={{ padding: 24 }}>
-      <h1>Home</h1>
-      <p>Welcome to Bake2Decor.</p>
+    <section >
+    
+      <Features />
     </section>
   );
 };
