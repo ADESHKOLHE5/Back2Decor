@@ -3,51 +3,27 @@ import {
   Box, 
   Typography, 
   FormGroup, 
-  FormControlLabel, 
-  Checkbox, 
-  Slider, 
+  FormControlLabel,  
   Button, 
-  styled 
 } from '@mui/material';
+import { PinkSlider } from './PinkSideBar';
+import { PinkCheckbox } from './PinkCheckbox';
+import { sideStyle1,sideStyle2,sideStyle3} from './SideBarStyled';
 
-
-// Custom Pink Slider
-const PinkSlider = styled(Slider)({
-  color: '#f48fb1',
-  height: 8,
-  '& .MuiSlider-track': { border: 'none' },
-  '& .MuiSlider-thumb': {
-    height: 24,
-    width: 24,
-    backgroundColor: '#fff',
-    border: '2px solid currentColor',
-    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-      boxShadow: 'inherit',
-    },
-  },
-  '& .MuiSlider-rail': { opacity: 0.5, backgroundColor: '#bfdfed' },
-});
-
-// Custom Pink Checkbox
-const PinkCheckbox = (props) => (
-  <Checkbox 
-    sx={{ color: '#f48fb1', '&.Mui-checked': { color: '#f48fb1' } }} 
-    {...props} 
-  />
-);
 
 const FilterSidebar = () => {
   const [price, setPrice] = useState([0, 200]);
+  const categories=['Baking Tools', 'Cake Essentials', 'Ingredients', 'Edible Prints']
 
   return (
-    <Box sx={{ width: 280, p: 3, border: '1px solid #e0f2f1', borderRadius: '20px' }}>
+    <Box sx={sideStyle1}>
       
       {/* Categories Section */}
-      <Typography variant="h5" sx={{ fontWeight: 'bold', mb: 2, fontFamily: 'serif' }}>
+      <Typography variant="h5" sx={sideStyle2}>
         Categories
       </Typography>
       <FormGroup>
-        {['Baking Tools', 'Cake Essentials', 'Ingredients', 'Edible Prints'].map((label) => (
+        {categories.map((label) => (
           <FormControlLabel 
             key={label}
             control={<PinkCheckbox />} 
@@ -58,8 +34,8 @@ const FilterSidebar = () => {
 
       {/* Price Range Section */}
       <Box sx={{ mt: 4 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-          <Typography variant="h5" sx={{ fontWeight: 'bold', fontFamily: 'serif' }}>
+        <Box sx={sideStyle3}>
+          <Typography variant="h5" sx={sideStyle2}>
             Price Range
           </Typography>
           <Typography sx={{ color: '#90a4ae' }}>
