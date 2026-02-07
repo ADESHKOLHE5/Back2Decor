@@ -3,8 +3,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
+
 
 
 const navLinks = [
@@ -16,6 +17,8 @@ const navLinks = [
 ];
 
 const Header = () => {
+   const navigate = useNavigate();
+  
   return (
     <AppBar position="static" elevation={0} className={styles.appBar}>
       <Toolbar className={styles.toolbar}>
@@ -49,7 +52,7 @@ const Header = () => {
 
         {/* Icons */}
         <Box className={styles.icons}>
-          <IconButton><SearchIcon /></IconButton>
+          <IconButton onClick={() => navigate("/shop")}  ><SearchIcon  /></IconButton>
           <IconButton><FavoriteBorderIcon /></IconButton>
           <IconButton><ShoppingBagOutlinedIcon /></IconButton>
           <IconButton><AccountCircleIcon/></IconButton>
