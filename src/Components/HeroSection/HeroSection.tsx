@@ -64,18 +64,18 @@ const btn1 = {
               },
             }
 
-       const btn2 = {
-              borderColor: "#ffffff",
-              color: "#ffffff",
-              padding: "12px 28px",
-              borderRadius: "30px",
-              textTransform: "none",
-              fontWeight: 600,
-              "&:hover": {
-                borderColor: "#ff8fab",
-                color: "#ff8fab",
-              },
-            }     
+      //  const btn2 = {
+      //         borderColor: "#ffffff",
+      //         color: "#ffffff",
+      //         padding: "12px 28px",
+      //         borderRadius: "30px",
+      //         textTransform: "none",
+      //         fontWeight: 600,
+      //         "&:hover": {
+      //           borderColor: "#ff8fab",
+      //           color: "#ff8fab",
+      //         },
+      //       }     
 
 /* Component */
 

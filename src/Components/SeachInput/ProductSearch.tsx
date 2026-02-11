@@ -1,6 +1,7 @@
 
 import { TextField, InputAdornment, styled } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { useSearch } from '../../Contexts/SearchContext';
 
 // 1. We created a "Styled" version of the TextField
 const CustomSearchField = styled(TextField)({
@@ -22,12 +23,15 @@ const CustomSearchField = styled(TextField)({
 
 // 2. The Component
 const ProductSearch = () => {
+  const { searchQuery, setSearchQuery } = useSearch();
+
   return (
     <CustomSearchField
       variant="outlined"
       placeholder="Search products..."
       sx={{ width: '25%' }}
-      
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">

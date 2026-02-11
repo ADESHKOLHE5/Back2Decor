@@ -1,6 +1,6 @@
-import React from 'react';
-// import { Outlet } from 'react-router-dom';
-import ProductManager from '../Components/CardProductDesign/ProductManager';
+import React from "react";
+import {ProductManager} from "../Components/CardProductDesign/ProductManager";
+
 
 const ShopAll: React.FC = () => {
   return (

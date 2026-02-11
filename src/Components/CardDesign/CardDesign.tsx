@@ -11,7 +11,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 
 import styles from "./CardDesign.module.css";
-import type { Product } from "../../Type/product";
+import type { Product } from "../../Type/Product";
 
 interface Props {
   product: Product;
@@ -57,15 +57,15 @@ const CardDesign = ({ product }: Props) => {
             {product.discount ? (
               <div>
                 <Typography className={styles.originalPrice}>
-                  ₹{(product.price * 83).toFixed(0)}
+                  ₹{(product.price)}
                 </Typography>
                 <Typography className={styles.price}>
-                  ₹{((product.price * 83) * (1 - product.discount / 100)).toFixed(0)}
+                  ₹{((product.price) * (1 - product.discount / 100)).toFixed(0)}
                 </Typography>
               </div>
             ) : (
               <Typography className={styles.price}>
-                ₹{(product.price * 83).toFixed(0)}
+                ₹{(product.price).toFixed(0)}
               </Typography>
             )}
           </div>
