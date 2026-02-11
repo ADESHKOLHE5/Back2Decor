@@ -5,14 +5,13 @@ import {
   Typography,
   Button,
   IconButton,
-  Rating,
-  CardActions
+  Rating
 } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 
 import styles from "./CardDesign.module.css";
-import type { Product } from "../../Type/Product";
+import type { Product } from "../../Type/product";
 import { useNavigate } from 'react-router-dom';
 
 interface Props {

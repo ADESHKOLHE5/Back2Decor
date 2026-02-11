@@ -4,7 +4,7 @@ import { Card, CardContent, CardMedia, Typography, Button } from '@mui/material'
 import LoadingMessage from '../LoadingMessage/LoadingMessage';
 import { ErrorApiFetch } from '../ErrorMessage/ErrorApiFetch';
 import useFetch from '../../Hooks/useFetch';
-import type { Product } from '../../Type/Product';
+import type { Product } from '../../Type/product';
 
 const ProductDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,7 +15,7 @@ const ProductDetails = () => {
     BakeProductData: product,
     loading,
     error,
-  } = useFetch<Product>(id ? `http://localhost:3000/BakePackProducts/${id}` : "");
+  } = useFetch<Product>(`http://localhost:3000/BakePackProducts/${id}`);
 
   if (loading) return <LoadingMessage />;
   if (error) return <ErrorApiFetch msg={error} />;

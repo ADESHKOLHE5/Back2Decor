@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import type { Product } from '../Type/Product';
+import type { Product } from '../Type/product';
 
 export const useFilteredProducts = (
   BakeProductData: Product[] | null | undefined,

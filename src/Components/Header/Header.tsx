@@ -1,13 +1,12 @@
-import { AppBar, Toolbar, Box, Typography, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Box, Typography, IconButton, Button, Menu, MenuItem } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import styles from "./Header.module.css";
-import { getUserRole } from "../../Utils/authUtils";
-
-
+import { useAuth } from "../../Contexts/AuthContext";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -19,7 +18,27 @@ const navLinks = [
 
 const Header = () => {
    const navigate = useNavigate();
-   const userRole = getUserRole();
+   const { isAuthenticated, role, logout } = useAuth();
+   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+     setAnchorEl(event.currentTarget);
+   };
+
+   const handleMenuClose = () => {
+     setAnchorEl(null);
+   };
+
+   const handleLogout = () => {
+     logout();
+     handleMenuClose();
+     navigate('/login');
+   };
+
+   const handleAdminDashboard = () => {
+     navigate('/admin');
+     handleMenuClose();
+   };
   
   return (
     <AppBar position="static" elevation={0} className={styles.appBar}>
@@ -34,7 +53,7 @@ const Header = () => {
       lg: "28px",  // desktop
     }
   }}>
-          Bake<span>2</span>Decor
+          Back<span>2</span>Decor
         </Typography>
 
         {/* Navigation */}
@@ -50,6 +69,16 @@ const Header = () => {
               {item.label}
             </NavLink>
           ))}
+          {isAuthenticated && role === 'admin' && (
+            <NavLink
+              to="/admin"
+              className={({ isActive }) =>
+                isActive ? styles.activeNav : styles.navItem
+              }
+            >
+              Admin
+            </NavLink>
+          )}
         </Box>
 
         {/* Icons */}
@@ -57,10 +86,29 @@ const Header = () => {
           <IconButton onClick={() => navigate("/shop")}  ><SearchIcon  /></IconButton>
           <IconButton><FavoriteBorderIcon /></IconButton>
           <IconButton><ShoppingBagOutlinedIcon /></IconButton>
-          <IconButton onClick={() => navigate("/profile")}>
-            <AccountCircleIcon/>
-            {userRole && <Typography variant="caption" sx={{ ml: 1, fontSize: '0.7rem' }}>{userRole}</Typography>}
-          </IconButton>
+          
+          {isAuthenticated ? (
+            <>
+              <IconButton onClick={handleMenuOpen}>
+                <AccountCircleIcon/>
+              </IconButton>
+              <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
+                <MenuItem disabled>{role?.toUpperCase()}</MenuItem>
+                {role === 'admin' && (
+                  <MenuItem onClick={handleAdminDashboard}>Admin Dashboard</MenuItem>
+                )}
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </Menu>
+            </>
+          ) : (
+            <Button 
+              color="inherit" 
+              onClick={() => navigate('/login')}
+              sx={{ ml: 1 }}
+            >
+              Login
+            </Button>
+          )}
         </Box>
 
       </Toolbar>

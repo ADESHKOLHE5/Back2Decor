@@ -13,17 +13,14 @@ import type { JSX } from "react";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 import useFetch from "../Hooks/useFetch";
 import type { User } from "../Type/User";
+import { useAuth } from "../Contexts/AuthContext";
 
 interface LoginFormInputs {
   email: string;
   password: string;
 }
 
-interface LoginFormProps {
-  onLogin: (role: string) => void;
-}
-
-export default function LoginForm({ onLogin }: LoginFormProps): JSX.Element {
+export default function LoginForm(): JSX.Element {
   const {
     register,
     handleSubmit,
@@ -32,24 +29,30 @@ export default function LoginForm({ onLogin }: LoginFormProps): JSX.Element {
 
   const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [url, setUrl] = useState<string>(""); // start with empty, only set on submit
   const { BakeProductData: users } = useFetch<User[]>(url);
 
   useEffect(() => {
     if (users && users.length > 0) {
       const user = users[0];
-      sessionStorage.setItem("userRole", user.role);
+      login(user.role);
       console.log("Login success:", user);
-      navigate("/home");
+      // Redirect based on role
+      if (user.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/shop");
+      }
     } else if (users && users.length === 0) {
       setErrorMsg("Invalid email or password.");
     }
-  }, [users, navigate]);
+  }, [users, navigate, login]);
 
   const onSubmit = async (data: LoginFormInputs) => {
     setErrorMsg(""); // reset old error
     setUrl(
-      `http://localhost:3000/Users?email=${data.email}&password=${data.password}`
+      `http://localhost:3000/users?email=${data.email}&password=${data.password}`
     );
   };
 
@@ -68,7 +71,7 @@ export default function LoginForm({ onLogin }: LoginFormProps): JSX.Element {
       }}
     >
       <Typography variant="h6" gutterBottom align="center">
-        Login to Fruit Fantasy
+        Login to Back2Decor
       </Typography>
 
       {errorMsg && (

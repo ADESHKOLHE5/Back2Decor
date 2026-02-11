@@ -20,7 +20,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
 import type { JSX } from "react";
 import type { SelectChangeEvent } from "@mui/material";
-import type { Product } from "../../Type/Product";
+import type { Product } from "../../Type/product";
 
 type AddNewProductProps = {
   onAddproduct: (newProduct: Product) => void;
@@ -149,7 +149,7 @@ export default function AddNewProduct({
     }
     try {
       const newProduct: Product = {
-        id: Date.now(),
+        id: Date.now().toString(),
         title: formData.title,
         price: Number(formData.price),
         category: formData.category,
