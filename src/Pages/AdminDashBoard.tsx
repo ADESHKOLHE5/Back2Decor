@@ -2,22 +2,13 @@ import React from 'react';
 import { Box, Container, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Contexts/AuthContext';
-import AddNewProduct from "../Components/AddProduct/AddNewProduct";
-import type { Product } from "../Type/product";
-import axios from "axios";
+
+
 
 const AdminDashboard: React.FC = () => {
   const navigate = useNavigate();
   const { logout } = useAuth();
 
-  const handleAddProduct = async (newProduct: Product) => {
-    try {
-      const response = await axios.post("http://localhost:3000/BakePackProducts", newProduct);
-      console.log("Submitted:", response.data);
-    } catch (error) {
-      console.error("Error submitting product:", error);
-    }
-  };
 
   const handleLogout = () => {
     logout();
@@ -40,13 +31,7 @@ const AdminDashboard: React.FC = () => {
           </Button>
         </Box>
 
-        {/* Add Product Section */}
-        <Box sx={{ marginBottom: '40px' }}>
-          <Typography variant="h5" gutterBottom>
-            Add New Product
-          </Typography>
-          <AddNewProduct onAddproduct={handleAddProduct} />
-        </Box>
+        
 
         {/* Admin Features Section */}
         <Box sx={{ marginTop: '40px' }}>

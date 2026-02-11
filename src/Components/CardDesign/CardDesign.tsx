@@ -16,9 +16,10 @@ import { useNavigate } from 'react-router-dom';
 
 interface Props {
   product: Product;
+  isAdmin?: boolean;
 }
 
-const CardDesign = ({ product }: Props) => {
+const CardDesign = ({ product, isAdmin = false }: Props) => {
   const navigate = useNavigate();
 
   return (
@@ -37,13 +38,15 @@ const CardDesign = ({ product }: Props) => {
           </div>
         )}
 
-        <IconButton className={styles.wishlist}>
+        <IconButton className={styles.wishlist} >
           <FavoriteBorderIcon />
         </IconButton>
 
-        <Button variant="contained" className={styles.cartBtn}>
-          Add to Cart
-        </Button>
+        {!isAdmin && (
+          <Button variant="contained" className={styles.cartBtn}>
+            Add to Cart
+          </Button>
+        )}
       </div>
 
       <CardContent>

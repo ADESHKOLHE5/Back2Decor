@@ -9,11 +9,14 @@ import { Design1, Design2,Design3} from "./ProductStyles";
 import LoadingMessage from "../LoadingMessage/LoadingMessage";
 import { useSearch } from "../../Contexts/SearchContext";
 import { useFilteredProducts } from "../../Hooks/useFilteredProducts";
+import AddNewProduct from "../AddProduct/AddNewProduct";
+import { useAuth } from "../../Contexts/AuthContext";
 
 
-export const ProductManager = () => {
+export const ProductManager = ({onAddproduct}: {onAddproduct: (product: Product) => void}) => {
   const { BakeProductData, loading, error } = useFetch<Product[]>("http://localhost:3000/BakePackProducts");
   const { searchQuery, selectedCategories, priceRange } = useSearch();
+  const auth = useAuth();
 
   const filteredProducts = useFilteredProducts(BakeProductData, searchQuery, selectedCategories, priceRange);
   
@@ -21,10 +24,16 @@ export const ProductManager = () => {
 
   return (
     <>
-    
+    {/* Add Product Section - Only show for admin users */}
+        {auth.hasRole('admin') && (
+          <Box sx={{ marginBottom: '40px' }}>
+            <AddNewProduct onAddproduct={onAddproduct} />
+          </Box>
+        )}
     <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 3 }}>
       <ProductSearch />
     </Box>
+    
     
     <Box sx={Design1}>
 
@@ -36,7 +45,7 @@ export const ProductManager = () => {
         {loading && <LoadingMessage />}
         {error && <ErrorApiFetch msg={error}/>}
         {filteredProducts.map((item:Product) => (
-          <CardDesign key={item.id} product={item} />
+          <CardDesign key={item.id} product={item} isAdmin={auth.hasRole('admin')} />
         ))}
       </Box>
     </Box>
