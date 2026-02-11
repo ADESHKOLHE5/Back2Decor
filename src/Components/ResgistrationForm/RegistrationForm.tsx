@@ -18,6 +18,7 @@ import {
   Snackbar,
 } from "@mui/material";
 import type { JSX } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 type RegistrationInputs = {
@@ -31,6 +32,7 @@ type RegistrationInputs = {
   username: string;
   password: string;
   confirmPassword: string;
+  role: "admin" | "user";
 };
 
 export default function Registration(): JSX.Element {
@@ -53,6 +55,7 @@ export default function Registration(): JSX.Element {
       address: "",
       state: "",
       dob: "",
+      role: "user" as "admin" | "user",
     },
     mode: "onBlur", // validate as user types
   });
@@ -104,8 +107,9 @@ export default function Registration(): JSX.Element {
 
   const onSubmit = async (data: RegistrationInputs) => {
     console.log("handleSubmit called");
+    const submissionData = { ...data, role: "user" };
     try {
-      await axios.post("http://localhost:3000/Users", data);
+      await axios.post("http://localhost:3000/Users", submissionData);
       setSnackbar({
         open: true,
         type: "success",
@@ -137,11 +141,17 @@ export default function Registration(): JSX.Element {
       minHeight="100vh"
       sx={{ backgroundColor: "#f0e9d6" }}
     >
-      <Paper elevation={4} sx={{ p: 4, maxWidth: 600, width: "100%", borderRadius: 3 }}>
+      <Paper elevation={4} sx={{ p: 4, maxWidth: 600, width: "100%", borderRadius: 4, border: "2px solid #ff69b4", background: "linear-gradient(135deg, #ffe4e1 0%, #ffb6c1 100%)", boxShadow: "0 8px 32px rgba(255, 105, 180, 0.3)" }}>
          <form onSubmit={handleSubmit(onSubmit,onErrors)}>
           {/* Step 1: Account Details */}
           <Box sx={{ display: step === 1 ? 'block' : 'none' }}>
-            <Typography variant="h5" align="center" gutterBottom fontWeight="bold">
+            <Typography
+              variant="h5"
+              align="center"
+              gutterBottom
+              fontWeight="bold"
+              sx={{ color: "#ff69b4", textShadow: "1px 1px 2px rgba(0,0,0,0.1)" }}
+            >
               New Registration: Account Details
             </Typography>
             <Controller
@@ -413,6 +423,7 @@ export default function Registration(): JSX.Element {
               <li><strong>Address:</strong> {values.address}</li>
               <li><strong>State:</strong> {values.state}</li>
               <li><strong>Date of Birth:</strong> {values.dob}</li>
+              <li><strong>Role:</strong> {values.role}</li>
             </ul>
 
             <Typography variant="body2" color="text.secondary" gutterBottom>
@@ -425,6 +436,9 @@ export default function Registration(): JSX.Element {
               </Button>
               <Button variant="contained" color="success" type="submit" >
                 Submit
+              </Button>
+              <Button variant="contained" color="success" onClick={()=>navigate("/profile")} >
+                Back to Login 
               </Button>
             </Box>
 

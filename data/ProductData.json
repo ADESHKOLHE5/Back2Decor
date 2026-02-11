@@ -129,7 +129,7 @@
       "discount": 16
     },
     {
-      "id": 1770555515107,
+      "id": "1770555515107",
       "title": "Anniversey Topper",
       "price": 108,
       "category": "theme-toppers",
@@ -139,7 +139,7 @@
       "discount": 9
     },
     {
-      "id": 1770555841078,
+      "id": "1770555841078",
       "title": "golden candle for cake",
       "price": 160,
       "category": "candles",
@@ -149,5 +149,34 @@
       "discount": 21
     }
   ],
-  "Users": []
+  "Users": [
+    {
+      "id": "55d9",
+      "username": "_mr_unique_ak5",
+      "password": "Pass@123",
+      "confirmPassword": "Pass@123",
+      "fullName": "adesh kolhe",
+      "email": "adeshkolhe006@gmail.com",
+      "phone": "7028888009",
+      "gender": "Male",
+      "address": "gajanan nagar",
+      "state": "Maharashtra",
+      "dob": "2026-02-09",
+      "role": "user"
+    },
+    {
+      "id": "2e23",
+      "username": "arti",
+      "password": "Arti@123",
+      "confirmPassword": "Arti@123",
+      "fullName": "Arti kolhe",
+      "email": "Artikolhe0@gmail.com",
+      "phone": "7823814050",
+      "gender": "Male",
+      "address": "modern colony",
+      "state": "Karnataka",
+      "dob": "2026-02-01",
+      "role": "admin"
+    }
+  ]
 }

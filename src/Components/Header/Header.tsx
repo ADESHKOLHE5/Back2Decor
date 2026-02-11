@@ -5,6 +5,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
+import { getUserRole } from "../../Utils/authUtils";
 
 
 
@@ -18,6 +19,7 @@ const navLinks = [
 
 const Header = () => {
    const navigate = useNavigate();
+   const userRole = getUserRole();
   
   return (
     <AppBar position="static" elevation={0} className={styles.appBar}>
@@ -55,7 +57,10 @@ const Header = () => {
           <IconButton onClick={() => navigate("/shop")}  ><SearchIcon  /></IconButton>
           <IconButton><FavoriteBorderIcon /></IconButton>
           <IconButton><ShoppingBagOutlinedIcon /></IconButton>
-          <IconButton><AccountCircleIcon/></IconButton>
+          <IconButton onClick={() => navigate("/profile")}>
+            <AccountCircleIcon/>
+            {userRole && <Typography variant="caption" sx={{ ml: 1, fontSize: '0.7rem' }}>{userRole}</Typography>}
+          </IconButton>
         </Box>
 
       </Toolbar>

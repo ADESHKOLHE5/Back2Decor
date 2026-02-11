@@ -5,21 +5,25 @@ import {
   Typography,
   Button,
   IconButton,
-  Rating
+  Rating,
+  CardActions
 } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 
 import styles from "./CardDesign.module.css";
 import type { Product } from "../../Type/Product";
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   product: Product;
 }
 
 const CardDesign = ({ product }: Props) => {
+  const navigate = useNavigate();
+
   return (
-    <Card className={styles.card}>
+    <Card className={styles.card} onDoubleClick={() => navigate(`/products/${product.id}`)}>
       <div className={styles.imageWrapper}>
         <CardMedia
           component="img"
@@ -68,6 +72,9 @@ const CardDesign = ({ product }: Props) => {
                 ₹{(product.price).toFixed(0)}
               </Typography>
             )}
+
+
+
           </div>
 
           <Rating value={product.rating} readOnly size="small" />
