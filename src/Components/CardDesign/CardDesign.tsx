@@ -8,11 +8,14 @@ import {
   Rating
 } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 
 import styles from "./CardDesign.module.css";
 import type { Product } from "../../Type/product";
 import { useNavigate } from 'react-router-dom';
+import { useCart } from "../../Contexts/CartContext";
+import { useWishlist } from "../../Contexts/WishlistContext";
 
 interface Props {
   product: Product;
@@ -21,6 +24,21 @@ interface Props {
 
 const CardDesign = ({ product, isAdmin = false }: Props) => {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    alert(`${product.title} added to cart!`);
+  };
+
+  const handleWishlistClick = () => {
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
+  };
 
   return (
     <Card className={styles.card} onDoubleClick={() => navigate(`/products/${product.id}`)}>
@@ -38,12 +56,16 @@ const CardDesign = ({ product, isAdmin = false }: Props) => {
           </div>
         )}
 
-        <IconButton className={styles.wishlist} >
-          <FavoriteBorderIcon />
+        <IconButton className={styles.wishlist} onClick={handleWishlistClick}>
+          {isInWishlist(product.id) ? (
+            <FavoriteIcon sx={{ color: 'red' }} />
+          ) : (
+            <FavoriteBorderIcon />
+          )}
         </IconButton>
 
         {!isAdmin && (
-          <Button variant="contained" className={styles.cartBtn}>
+          <Button variant="contained" className={styles.cartBtn} onClick={handleAddToCart}>
             Add to Cart
           </Button>
         )}

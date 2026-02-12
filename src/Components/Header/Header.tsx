@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Box, Typography, IconButton, Button, Menu, MenuItem } from "@mui/material";
+import { AppBar, Toolbar, Box, Typography, IconButton, Button, Menu, MenuItem, Badge } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -7,6 +7,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./Header.module.css";
 import { useAuth } from "../../Contexts/AuthContext";
+import { useWishlist } from "../../Contexts/WishlistContext";
+import { useCart } from "../../Contexts/CartContext";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -19,6 +21,8 @@ const navLinks = [
 const Header = () => {
    const navigate = useNavigate();
    const { isAuthenticated, role, logout } = useAuth();
+   const { state: wishlistState } = useWishlist();
+   const { state: cartState } = useCart();
    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
    const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -84,8 +88,16 @@ const Header = () => {
         {/* Icons */}
         <Box className={styles.icons}>
           <IconButton onClick={() => navigate("/shop")}  ><SearchIcon  /></IconButton>
-          <IconButton><FavoriteBorderIcon /></IconButton>
-          <IconButton><ShoppingBagOutlinedIcon /></IconButton>
+          <IconButton onClick={()=> navigate("/wishlist")}>
+            <Badge badgeContent={wishlistState.items.length} color="secondary">
+              <FavoriteBorderIcon />
+            </Badge>
+          </IconButton>
+          <IconButton onClick={()=> navigate("/cart")}>
+            <Badge badgeContent={cartState.totalItems} color="secondary">
+              <ShoppingBagOutlinedIcon />
+            </Badge>
+          </IconButton>
           
           {isAuthenticated ? (
             <>

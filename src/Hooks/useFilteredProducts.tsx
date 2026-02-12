@@ -16,7 +16,7 @@ export const useFilteredProducts = (
       const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase())
        || (!isNaN(searchNum) && searchNum > 0 && product.price <= searchNum);
 
-      // Filter by selected categories
+      // Filter by selected categories (case-sensitive)
       const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
 
       // Filter by price range

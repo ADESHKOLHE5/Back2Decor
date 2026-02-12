@@ -5,10 +5,12 @@ export default function useFetch<T>(url: string): {
   BakeProductData: T | null;
   loading: boolean;
   error: string;
+  refetch: () => void;
 } {
   const [BakeProductData, setBakeProductData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
+  const [refetchTrigger, setRefetchTrigger] = useState(0);
 
   useEffect(() => {
     if (!url) return; // Avoid fetching when URL is empty
@@ -47,7 +49,11 @@ export default function useFetch<T>(url: string): {
     return () => {
       controller.abort(); // Cancel request on cleanup
     };
-  }, [url]);
+  }, [url, refetchTrigger]);
 
-  return { BakeProductData, loading, error };
+  const refetch = () => {
+    setRefetchTrigger(prev => prev + 1);
+  };
+
+  return { BakeProductData, loading, error, refetch };
 }

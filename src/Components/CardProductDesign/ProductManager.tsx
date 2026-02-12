@@ -11,23 +11,28 @@ import { useSearch } from "../../Contexts/SearchContext";
 import { useFilteredProducts } from "../../Hooks/useFilteredProducts";
 import AddNewProduct from "../AddProduct/AddNewProduct";
 import { useAuth } from "../../Contexts/AuthContext";
+import { useCallback } from "react";
 
 
 export const ProductManager = ({onAddproduct}: {onAddproduct: (product: Product) => void}) => {
-  const { BakeProductData, loading, error } = useFetch<Product[]>("http://localhost:3000/BakePackProducts");
+  const { BakeProductData, loading, error, refetch } = useFetch<Product[]>("http://localhost:3000/BakePackProducts");
   const { searchQuery, selectedCategories, priceRange } = useSearch();
   const auth = useAuth();
 
   const filteredProducts = useFilteredProducts(BakeProductData, searchQuery, selectedCategories, priceRange);
   
-  
+  const handleProductAdded = useCallback((product: Product) => {
+    onAddproduct(product);
+    // Refetch the products to show the newly added product
+    refetch();
+  }, [onAddproduct, refetch]);
 
   return (
     <>
     {/* Add Product Section - Only show for admin users */}
         {auth.hasRole('admin') && (
           <Box sx={{ marginBottom: '40px' }}>
-            <AddNewProduct onAddproduct={onAddproduct} />
+            <AddNewProduct onAddproduct={handleProductAdded} />
           </Box>
         )}
     <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 3 }}>

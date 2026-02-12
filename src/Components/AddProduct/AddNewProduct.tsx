@@ -32,7 +32,7 @@ const categoryOptions = [
   { value: "Theme Toppers", label: "Theme Toppers" },
   { value: "Customized Topper", label: "Customized Topper" },
   { value: "Knifes", label: "Knifes" },
-  { value: "candles", label: "Candles" },
+  { value: "Candles", label: "Candles" },
   { value: "Cake Essentials", label: "Cake Essentials" },
   { value: "Artificial Flower", label: "Artificial Flower" },
   { value: "Baking Tools", label: "Baking Tools" },

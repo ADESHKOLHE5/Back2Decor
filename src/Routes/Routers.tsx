@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import AppLayout from "../Components/AppLayot/AppLayout";
+import AppLayout from "../Pages/AppLayot/AppLayout";
 import Home from "../Pages/Home";
 import About from "../Pages/About";
 import Ingredients from "../Pages/Ingredients";
@@ -11,13 +11,17 @@ import Registration from "../Components/ResgistrationForm/RegistrationForm";
 import ProductDetails from "../Components/ProductDetails/ProductDetails";
 import AdminDashboard from "../Pages/AdminDashBoard";
 import ProtectedRoute from "../Components/ProtectedRoute/ProtectedRoute";
+import Cart from "../Pages/Cart";
+import Wishlist from "../Pages/Wishlist";
 
 const Routers = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
     children: [
-      { index: true, element: <Home /> },
+      { index: true, 
+        element: <Home /> 
+      },
       { 
         path: "shop", 
         element: 
@@ -41,6 +45,12 @@ const Routers = createBrowserRouter([
       { path: "tools", element: <Tools /> },
       { path: "ingredients", element: <Ingredients /> },
       { path: "about", element: <About /> },
+      { path: "cart", element: <Cart /> },
+      
+      { path: "wishlist",
+         element: (<ProtectedRoute requiredRole="user">
+          <Wishlist />
+        </ProtectedRoute>)},
       { path: "login", element: <LoginForm /> },
       { path: "register", element: <Registration /> },
     ],
